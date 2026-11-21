@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#121418"
+    android:padding="12dp">
+
+    <!-- Shoulder Buttons L1 & R1 -->
+    <Button
+        android:id="@+id/btnL1"
+        android:layout_width="110dp"
+        android:layout_height="44dp"
+        android:text="L1"
+        android:backgroundTint="#2E3440"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnR1"
+        android:layout_width="110dp"
+        android:layout_height="44dp"
+        android:text="R1"
+        android:backgroundTint="#2E3440"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Top Center: Status + Connect Button -->
+    <LinearLayout
+        android:id="@+id/topBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnL1"
+        app:layout_constraintEnd_toStartOf="@id/btnR1">
+
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="● Disconnected"
+            android:textColor="#FF5252"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_marginEnd="12dp" />
+
+        <Button
+            android:id="@+id/btnConnect"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="Connect BT"
+            android:textSize="12sp"
+            android:backgroundTint="#1E88E5" />
+    </LinearLayout>
+
+    <!-- Left Side: 360 Joystick -->
+    <com.example.btgamepad.JoystickView
+        android:id="@+id/joystickView"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnL1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="16dp" />
+
+    <!-- Center-Left: Compact D-Pad -->
+    <GridLayout
+        android:id="@+id/dpadGrid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:columnCount="3"
+        android:rowCount="3"
+        app:layout_constraintStart_toEndOf="@id/joystickView"
+        app:layout_constraintEnd_toStartOf="@id/actionCluster"
+        app:layout_constraintTop_toBottomOf="@id/topBar"
+        app:layout_constraintBottom_toTopOf="@id/centerButtons">
+
+        <Space android:layout_width="46dp" android:layout_height="46dp" />
+        <Button android:id="@+id/btnUp" android:layout_width="46dp" android:layout_height="46dp" android:text="▲" android:padding="0dp" android:backgroundTint="#37474F" />
+        <Space android:layout_width="46dp" android:layout_height="46dp" />
+
+        <Button android:id="@+id/btnLeft" android:layout_width="46dp" android:layout_height="46dp" android:text="◀" android:padding="0dp" android:backgroundTint="#37474F" />
+        <Space android:layout_width="46dp" android:layout_height="46dp" />
+        <Button android:id="@+id/btnRight" android:layout_width="46dp" android:layout_height="46dp" android:text="▶" android:padding="0dp" android:backgroundTint="#37474F" />
+
+        <Space android:layout_width="46dp" android:layout_height="46dp" />
+        <Button android:id="@+id/btnDown" android:layout_width="46dp" android:layout_height="46dp" android:text="▼" android:padding="0dp" android:backgroundTint="#37474F" />
+        <Space android:layout_width="46dp" android:layout_height="46dp" />
+    </GridLayout>
+
+    <!-- Bottom Center: Select & Start -->
+    <LinearLayout
+        android:id="@+id/centerButtons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/joystickView"
+        app:layout_constraintEnd_toStartOf="@id/actionCluster">
+
+        <Button
+            android:id="@+id/btnSelect"
+            android:layout_width="86dp"
+            android:layout_height="38dp"
+            android:text="SELECT"
+            android:textSize="11sp"
+            android:backgroundTint="#455A64"
+            android:layout_marginEnd="10dp" />
+
+        <Button
+            android:id="@+id/btnStart"
+            android:layout_width="86dp"
+            android:layout_height="38dp"
+            android:text="START"
+            android:textSize="11sp"
+            android:backgroundTint="#455A64" />
+    </LinearLayout>
+
+    <!-- Right Side: A, B, X, Y Buttons -->
+    <GridLayout
+        android:id="@+id/actionCluster"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:columnCount="3"
+        android:rowCount="3"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnR1"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <Space android:layout_width="58dp" android:layout_height="58dp" />
+        <Button android:id="@+id/btnY" android:layout_width="58dp" android:layout_height="58dp" android:text="Y" android:backgroundTint="#FBC02D" android:textColor="#000000" />
+        <Space android:layout_width="58dp" android:layout_height="58dp" />
+
+        <Button android:id="@+id/btnX" android:layout_width="58dp" android:layout_height="58dp" android:text="X" android:backgroundTint="#1976D2" />
+        <Space android:layout_width="58dp" android:layout_height="58dp" />
+        <Button android:id="@+id/btnB" android:layout_width="58dp" android:layout_height="58dp" android:text="B" android:backgroundTint="#D32F2F" />
+
+        <Space android:layout_width="58dp" android:layout_height="58dp" />
+        <Button android:id="@+id/btnA" android:layout_width="58dp" android:layout_height="58dp" android:text="A" android:backgroundTint="#388E3C" />
+        <Space android:layout_width="58dp" android:layout_height="58dp" />
+    </GridLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
